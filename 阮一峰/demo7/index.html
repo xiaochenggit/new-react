@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获得真实的 dom 节点</title>
+	<script type="text/javascript" src='../js/react.js'></script>
+	<script type="text/javascript" src='../js/react-dom.js'></script>
+	<script type="text/javascript" src='../js/browser.min.js'></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel">
+		var MyComponent = React.createClass({
+			handleClick: function (){
+				this.refs.myInput.focus();
+			},
+			render : function (){
+				return (
+					<div>
+						<input name='xiao' type = 'text' ref='myInput'/>
+						<input type='button' value='click me' onClick={this.handleClick} />
+					</div>
+				);
+			}
+		});
+		ReactDOM.render(
+			<MyComponent/>,
+			document.getElementById('demo')
+		)
+	</script>
+</body>
+</html>

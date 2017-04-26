@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import Myroot from './Myroot';
+import Hello from './hello';
+import NoteList from './NoteList';
+import PropTypes from './propTypes';
+import getDefaultProps from './getDefaultProps';
 import './App.css';
 
 class App extends Component {
@@ -16,7 +20,15 @@ class App extends Component {
         </p>
         <div className="ahtor">
           <Myroot/>
+          <Hello name='xiaocheng'/>
         </div>
+        <NoteList>
+          <span>1</span>
+          <span>2</span>
+          <span>3</span>
+        </NoteList>
+        <PropTypes title='my name is xiaocheng'/>
+        <getDefaultProps title = 'da'/>
       </div>
     );
   }

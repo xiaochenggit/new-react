@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise</title>
+	<script type="text/javascript" src='../js/react.js'></script>
+	<script type="text/javascript" src='../js/react-dom.js'></script>
+	<script type="text/javascript" src='../js/browser.min.js'></script>
+	<script type="text/javascript" src='../js/jquery.min.js'></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel">
+		var RepoList = React.createClass({
+			getInitialState: function () {
+				return {
+					loading : true,
+					error : null,
+					data : null,
+				}
+			},
+			componentDidMount () {
+				this.props.promise.then(
+					value => this.setState({
+						loading: false,
+						data: value
+					}),
+					error => this.setState({
+						loading: false,
+						error:error
+					})
+				)
+			},
+			render : function () {
+				if (this.state.loading) {
+					return <span>loading ...</span>;
+				} else if (this.state.error !== null) {
+					return <span>Error: this.state.error</span>;
+				} else {
+					var repos = this.state.data.items;
+					var reposList = repos.map(function(repo){
+						return (
+							<li>
+								<a href={repo.html_url}>{repo.name}</a>
+							</li>
+						)
+					});
+					return (
+						<div>
+							<h1>React Promise at 阮一峰老师</h1>
+							<ul>{reposList}</ul>
+						</div>
+					)
+				}
+			}
+		});
+		ReactDOM.render(
+			<RepoList promise={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')}/>,
+			document.getElementById('demo')
+		);
+	</script>
+</body>
+</html>

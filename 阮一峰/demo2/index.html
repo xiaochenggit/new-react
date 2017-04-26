@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组循环</title>
+	<script type="text/javascript" src='../js/react.js'></script>
+	<script type="text/javascript" src='../js/react-dom.js'></script>
+	<script type="text/javascript" src='../js/browser.min.js'></script>
+</head>
+<body>
+	<div id = 'demo'></div>
+	<script type="text/babel">
+		var learns = ['React','Vue','Node'];
+		ReactDOM.render(
+			<div className='items'>21
+				{
+					learns.map(function(item){
+						return <div className='item'>学习：{item}</div>
+					})
+				}
+				<div className='all'>
+					{learns}
+				</div>
+			</div>,
+			document.getElementById('demo')
+		);
+	</script>
+</body>
+</html>

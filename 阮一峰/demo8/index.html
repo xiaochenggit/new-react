@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+	<script type="text/javascript" src='../js/react.js'></script>
+	<script type="text/javascript" src='../js/react-dom.js'></script>
+	<script type="text/javascript" src='../js/browser.min.js'></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel">
+		var Input = React.createClass({
+			getInitialState: function (){
+				return {
+					value: 'hello',
+					author: 'xiaocheng'
+				}
+			},
+			handleChange: function (event) {
+				this.setState({
+					value : event.target.value
+				})
+			},
+			render : function (){
+				var value = this.state.value;
+				var author = this.state.author;
+				return (
+					<div>
+						<input value={value} type='text' onChange = {this.handleChange} />
+						<h2>{value}</h2>
+						<h1>{author}</h1>
+					</div>
+				)
+			}
+		});
+		ReactDOM.render(
+			<Input/>,
+			document.getElementById('demo')
+		);
+	</script>
+</body>
+</html>

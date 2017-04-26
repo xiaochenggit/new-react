@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this.props.children</title>
+	<script type="text/javascript" src='../js/react.js'></script>
+	<script type="text/javascript" src='../js/react-dom.js'></script>
+	<script type="text/javascript" src='../js/browser.min.js'></script>
+</head>
+<body>
+	<script type="text/babel">
+		var NoteList = React.createClass({
+			render : function (){
+				return (
+					<ul>
+					{
+						React.Children.map(this.props.children,function(child){
+							return <li>{child}</li>
+						})
+					}
+					</ul>
+				)
+			}
+		})
+		ReactDOM.render(
+			<NoteList>
+				<span>1</span>
+				<span>2</span>
+				<span>3</span>
+			</NoteList>,
+			document.body
+		);
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getDefaultProps</title>
+	<script type="text/javascript" src='../js/react.js'></script>
+	<script type="text/javascript" src='../js/react-dom.js'></script>
+	<script type="text/javascript" src='../js/browser.min.js'></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel">
+		var MyTitle = React.createClass({
+			getDefaultProps : function (){
+				return {
+					title : 'my Default title'
+				};
+			},
+			render : function (){
+				return <h1>{this.props.title}</h1>
+			}
+		});
+		ReactDOM.render(
+			<MyTitle/>,
+			document.getElementById('demo')
+		)
+	</script>
+</body>
+</html>

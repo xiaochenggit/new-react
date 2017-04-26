@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ajax</title>
+	<script type="text/javascript" src='../js/react.js'></script>
+	<script type="text/javascript" src='../js/react-dom.js'></script>
+	<script type="text/javascript" src='../js/browser.min.js'></script>
+	<script type="text/javascript" src='../js/jquery.min.js'></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel" >
+		var MyAjax = React.createClass({
+			getInitialState: function () {
+				return {
+					userName: '',
+					url: ''
+				}
+			},
+			componentDidMount: function () {
+				$.get(this.props.getUrl, function (result){
+					var data = result[0];
+					if (this.isMounted()) {
+						this.setState({
+							userName: data.owner.login,
+							url: data.owner.html_url
+						})
+					}
+				}.bind(this))
+			},
+			render : function () {
+				var userName = this.state.userName;
+				var url = this.state.url;
+				return(
+					<h1>用户名:{userName} <a href={url} >地址</a></h1>
+				)
+			}
+		});
+		ReactDOM.render(
+			<MyAjax getUrl='https://api.github.com/users/octocat/gists'/>,
+			document.getElementById('demo')
+		)
+	</script>
+</body>
+</html>

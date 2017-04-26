@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件的声明周期</title>
+	<script type="text/javascript" src='../js/react.js'></script>
+	<script type="text/javascript" src='../js/react-dom.js'></script>
+	<script type="text/javascript" src='../js/browser.min.js'></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel">
+		var Mount = React.createClass({
+			getInitialState: function () {
+				return {
+					opacity : 1.0,
+					author : 'xiaocheng'
+				}
+			},
+			componentDidMount: function (){
+				var IsAdd = false;
+				this.timer = setInterval(function(){
+					var opacity = this.state.opacity;
+					opacity = IsAdd?opacity + 0.05 : opacity - 0.05;
+					if (opacity <= 0.1) {
+						IsAdd = true;
+					}
+					if (opacity >= 1) {
+						IsAdd = false;
+					}
+					this.setState({
+						opacity : opacity
+					});
+				}.bind(this),100)
+			},
+			render: function () {
+				var opacity = this.state.opacity;
+				var author = this.state.author;
+				return (
+					<div style={{opacity: opacity}}>
+						<h1>作者: {author} 性别: {this.props.sex}</h1>
+					</div>
+				)
+			} 
+		});
+		ReactDOM.render(
+			<Mount sex='男'/>,
+			document.getElementById('demo')
+		)
+	</script>
+</body>
+</html>
