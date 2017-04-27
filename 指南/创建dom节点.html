@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建 dom 节点</title>
+	<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel">
+		var child1 = React.createElement('li', {className: 'item'}, 'first child');
+		var child2 = React.createElement('li', {className: 'item'}, 'secend child');
+		var root = React.createElement('ul', {className: 'items'}, child1, child2);
+		ReactDOM.render(
+			root,
+			document.getElementById('demo')
+		);
+	</script>
+</body>
+</html>

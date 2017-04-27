@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试专用</title>
+	<script type="text/javascript" src='js/react.js'></script>
+	<script type="text/javascript" src='js/react-dom.js'></script>
+	<script type="text/javascript" src='js/browser.min.js'></script>
+	<script type="text/javascript" src='js/jquery.min.js'></script>
+	<script src="https://npmcdn.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel">
+	    var Comment = React.createClass({
+	    	render: function (){
+	    		var md = new Remarkable();
+	    		return (
+	    			<div className='comment'>
+	    				<h1>用户名: {this.props.name}</h1>
+	    				<p className='content'>{md.render(this.props.children.toString())}</p>
+	    			</div>
+	    		)
+	    	}
+	    });
+	    var CommentList = React.createClass({
+	    	render: function (){
+	    		return (
+		    		<div className='commentList'>
+		    			<Comment name='xiaocheng'>
+		    				<span>1</span>
+		    				<span>2</span>
+		    			</Comment>
+		    			<Comment name='zhaoqiang'>
+		    				<span>3</span>
+		    				<span>4</span>
+		    			</Comment>
+		    		</div>
+		    	)
+	    	}
+	    })
+	    ReactDOM.render(
+	    	<CommentList/>,
+	    	document.getElementById('demo')
+	    )
+	</script>
+</body>
+</html>
