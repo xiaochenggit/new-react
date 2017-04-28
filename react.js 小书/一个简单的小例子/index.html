@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一个点赞的小例子</title>
+	<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<div id="demo2"></div>
+	<script type="text/babel">
+		class LickButton extends React.Component {
+			constructor (props) {
+			    super(props);
+			    this.state = {...props};
+			    this.handleChange = this.handleChange.bind(this);
+			}
+			handleChange () {
+				this.setState({isLike: !this.state.isLike});
+			}
+			render () {
+				return (
+				    <div className ='wrapper' onClick={this.handleChange}>
+				      <button className ='like-btn'>
+				        <span className='like-text'>{this.state.isLike?'取消':'点赞'}</span>
+				        <span>👍</span>
+				      </button>
+				    </div>
+				)
+			}
+		}
+		LickButton.defaultProps = {isLike:false,text: '喜欢'}
+		ReactDOM.render(
+			<LickButton/>,
+			document.getElementById('demo')
+		)
+		ReactDOM.render(
+			<LickButton/>,
+			document.getElementById('demo2')
+		)
+	</script>
+</body>
+</html>

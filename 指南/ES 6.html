@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ES 6</title>
+	<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel">
+		class Counter extends React.Component {
+		  constructor(props) {
+		    super(props);
+		    this.state = {count: props.initialCount};
+		    this.tick = this.tick.bind(this);
+		  }
+		  tick() {
+		    this.setState({count: this.state.count + 1});
+		  }
+		  render() {
+		    return (
+		      <div onClick={this.tick}>
+		        Clicks: {this.state.count}
+		      </div>
+		    );
+		  }
+		}
+		Counter.defaultProps = { initialCount: 0 };
+		ReactDOM.render(
+			<Counter/>,
+			document.getElementById('demo')
+		)
+	</script>
+</body>
+</html>

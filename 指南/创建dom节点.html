@@ -9,13 +9,30 @@
 </head>
 <body>
 	<div id="demo"></div>
+	<div id="demo1"></div>
 	<script type="text/babel">
-		var child1 = React.createElement('li', {className: 'item'}, 'first child');
+		// 创建 dom 的 第一种方法
+
+		var child1 = React.createElement('li', {
+			className: 'item',
+			'data-id': 1223
+		}, 'first child');
 		var child2 = React.createElement('li', {className: 'item'}, 'secend child');
-		var root = React.createElement('ul', {className: 'items'}, child1, child2);
+		var root = React.createElement('ul', {className: 'items'}, child1, child2); 
+
+		// 第二种方法
+
+		var root1 = React.DOM.ul(
+			{className: 'items'},
+			React.DOM.li({className: 'item'},'my name li')
+		)
 		ReactDOM.render(
 			root,
 			document.getElementById('demo')
+		);
+		ReactDOM.render(
+			root1,
+			document.getElementById('demo1')
 		);
 	</script>
 </body>

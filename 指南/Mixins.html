@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Mixins</title>
+	<script src="https://npmcdn.com/react@15.3.1/dist/react.js"></script>
+    <script src="https://npmcdn.com/react-dom@15.3.1/dist/react-dom.js"></script>
+    <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+</head>
+<body>
+	<div id="demo"></div>
+	<script type="text/babel">
+		var TickTock = React.createClass({
+			getInitialState: function (){
+				return {
+					seconds: 0
+				}
+			},
+			componentDidMount: function (){
+				setInterval(this.tick,1000);
+			},
+			tick: function() {
+				this.setState({
+					seconds : this.state.seconds + 1
+				})
+			},
+			render: function (){
+				return (
+					<h1>Seconds : {this.state.seconds}</h1>
+				)
+			}
+		});
+		ReactDOM.render(
+			<TickTock/>,
+			document.getElementById('demo')
+		);
+	</script>
+</body>
+</html>
