@@ -17,7 +17,7 @@ class MarkDown extends Component {
 		this.setState({
 			value : target.value
 		})
-		this._getAfter();
+		//this._getAfter();
 	}
 
 	render() {

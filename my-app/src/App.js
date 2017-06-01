@@ -28,7 +28,7 @@ class App extends Component {
           <span>3</span>
         </NoteList>
         <PropTypes title='my name is xiaocheng'/>
-        <getDefaultProps title = 'da'/>
+        <getDefaultProps title='da'/>
       </div>
     );
   }

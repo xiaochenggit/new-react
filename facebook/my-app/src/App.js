@@ -9,8 +9,8 @@ class App extends Component {
   render() {
     return (
        <div className='app'>
-        <GetName name='xiaocheng'/>
-        <GetName name='zhaoqiang'/>
+        <GetName name={{'name': 'xiaocheng'}}/>
+        <GetName name={{'name': 'zhaoqiang'}}/>
         <Timer/>
         <h2>ToDo</h2>
         <ToDo/>

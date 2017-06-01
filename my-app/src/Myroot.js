@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-  render() {
-    var text = new Date().toLocaleTimeString();
-    function tick(){
-      text = new Date().toLocaleTimeString();
+  constructor() {
+    super();
+    this.state = {
+      date : new Date().toLocaleTimeString()
     }
-    setInterval(tick,1000);
+  }
+
+  tick() {
+    var date = new Date().toLocaleTimeString();
+    this.setState({ date });
+  }
+
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      this.tick();
+    }, 1000)
+  }
+  
+  render() {
     return (
-      <div className='xiaocheng'>{text}</div>
+      <div className='xiaocheng'>{this.state.date}</div>
     );
   }
   

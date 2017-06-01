@@ -5,9 +5,7 @@ class NoteList extends Component{
 		return(
 			<ul> 
 			{
-				React.Children.map(this.props.children,function (child){
-					return <li>{child}</li>
-				})
+				this.props.children.map( (item,index) => <li key={index}>{item}</li>)
 			}
 			</ul>
 		);

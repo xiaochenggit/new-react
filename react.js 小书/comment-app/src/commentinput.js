@@ -30,8 +30,7 @@ class CommentInput extends React.Component {
       this.setState({
         username: username
       })
-    }
-    if (!username) {
+    } else {
       this.input.focus();
     }
   }
