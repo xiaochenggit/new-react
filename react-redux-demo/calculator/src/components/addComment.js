@@ -7,6 +7,19 @@ class AddComment extends Component {
 		this.handleClick = this.handleClick.bind(this);
 	}
 
+	componentDidMount() {
+		if (!this.getUserName()) {
+			this.userName.focus();
+		} else {
+			this.message.focus();
+			this.userName.value = this.getUserName();
+		}
+	}
+
+	getUserName() {
+		return localStorage.getItem('commentUserName');
+	}
+
 	handleClick(event) {
 		event.preventDefault();
 		var userName = this.userName.value.trim();
@@ -16,6 +29,8 @@ class AddComment extends Component {
 			return false;
 		}
 		this.props.onAddComment(userName, message);
+		this.message.value = '';
+		this.message.focus();
 	}
 
 	render() {
