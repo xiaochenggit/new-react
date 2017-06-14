@@ -1,4 +1,4 @@
-import React , { Component } from 'react';
+﻿import React , { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addTodo , completeTodo , setVisibilityFilter , VisibilityFilters} from '../actions';
@@ -11,16 +11,20 @@ class App extends Component {
 	render() {
 		// App 接收 state 映射的对象 obj 中的属性和 dispath 传递给子组件
 		const { dispatch , visibleTodos , visibilityFilter } = this.props;
-
+		console.log(dispatch);
+		function complete (index) {
+			if (visibilityFilter === 'SHOW_ALL') {
+				dispatch(completeTodo(index))
+			}
+		}
 		return (
 			<div className='container'>
 				<AddTodo onAddClick={(text) => dispatch(addTodo(text))} />
 				<TodoList todos={visibleTodos} 
-				onTodoClick={(index) => dispatch(completeTodo(index))} />
+				onTodoClick={(index) => complete (index)} />
 				<Footer filter={visibilityFilter} 
 				onFilterChange={(nextFilter) => dispatch(setVisibilityFilter(nextFilter))}/>
 			</div>
-
 		)
 	}
 

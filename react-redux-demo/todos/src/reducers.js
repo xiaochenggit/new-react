@@ -17,21 +17,25 @@ const visibilityFilter = (state = VisibilityFilters.SHOW_ALL , action) => {
 	}
 
 }
-
+function getStateTodos () {
+	return JSON.parse(localStorage.getItem('todos'));
+} 
 // 待办项响应
-const todos = (state = [] , action ) => {
+const todos = (state = getStateTodos() , action ) => {
 
 	switch (action.type) {
 		case ADD_TODO:
-			return [
+			var todos = [
 				...state,
 				{
 					text: action.text,
 					completed: false
 				}
 			];
+			localStorage.setItem('todos',JSON.stringify(todos));
+			return todos;
 		case COMPLETE_TODO:
-			return [
+			var todos1 = [
 				// 点击位置之前
 				...state.slice(0, action.index),
 				// 点击位置
@@ -41,6 +45,8 @@ const todos = (state = [] , action ) => {
 				// 点击位置之后
 				...state.slice(action.index + 1)
 			];
+			localStorage.setItem('todos',JSON.stringify(todos1));
+			return todos1;
 		default:
 			return state;
 	}
