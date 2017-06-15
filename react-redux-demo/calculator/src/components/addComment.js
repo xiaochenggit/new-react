@@ -47,8 +47,8 @@ class AddComment extends Component {
 					<div className='addMessage'>
 						<label>
 							<span>用户名: </span>
-							<input name='message' 
-							ref={ (input) => this.message = input } />
+							<textarea name='message'  ref={ (input) => this.message = input } >
+							</textarea>
 						</label>
 					</div>
 					<button onClick={this.handleClick}>提交</button>
