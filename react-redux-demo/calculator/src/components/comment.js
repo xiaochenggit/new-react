@@ -13,19 +13,26 @@ class Comment extends Component {
 		this.timer = setInterval(() => {
 			let time = this.props.comment.createTime;
 			this.inputTime.innerHTML = this.getTimeago(time);
-		}, 5000)
+		}, 200)
 	}
 
 	componentWillUnmount() {
 		clearInterval(this.timer);
 	}
-
+	/**
+	 * [getTimeago 返回时间过去的字符串  例 3小时前]
+	 * @param  {[Number]} t [时间戳]
+	 * @return {[string]}   [时间过去的字符串]
+	 */
 	getTimeago(t) { 
 		let time = Math.round((new Date().getTime() - t) / 1000);
 		if (!time) {
-			return '1秒前';
+			return '刚刚';
 		}
-		return time >= 60 ? Math.ceil(time / 60) + '分钟前' : time + '秒前';  
+		if (time > 60 * 60 ) {
+			return Math.floor(time / (60 * 60)) + '小时前';
+		}
+		return time >= 60 ? Math.floor(time / 60) + '分钟前' : time + '秒前';  
 	}
 
 	render() {

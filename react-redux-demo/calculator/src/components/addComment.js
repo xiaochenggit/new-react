@@ -8,6 +8,7 @@ class AddComment extends Component {
 	}
 
 	componentDidMount() {
+		// 判断有没有储存用户名
 		if (!this.getUserName()) {
 			this.userName.focus();
 		} else {
